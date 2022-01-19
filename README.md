@@ -32,10 +32,13 @@ POST /login => {'email' : "enrique@mail.com", password: "password"}.
 
     #response { "id": 1, "full": "http://link_test.com", "short": `"hHvvUe"`, "total_views": int}
         
+  - DELETE /links/:id
   - GET /links #links_index
 
     #respose [{"id": 1,"full": "http://link_test.com","short": "hHvvUe","total_views": 1}]
-    
+  - PUT /links/:id => {"full": "new_link"}
+
+    #response { "id": 3, "full": "new_link", "short": "hHvCAu", "total_views": 0}
   - GET /links/:id/views #links_index
 
     #response [{ "operative_system": "Macintosh", "browser": "Chrome", "ip_address": "187.189.127.233", "date": "2022-01-19 - 12:23:08"}]
