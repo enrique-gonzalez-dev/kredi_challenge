@@ -1,24 +1,58 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Kredi Challenge, cutting links
 
-Things you may want to cover:
+Rails version: 6.1.4
+Ruby version: 3.0.0
 
-* Ruby version
+Using sqlite3 in development mode
 
-* System dependencies
+# Get Started
 
-* Configuration
+Run
+````
+$ bundle install
+````
 
-* Database creation
+Run migrations and gen seeders
+````
+$ rails db:migrate db:seed
+````
+Is running in port: 3000 
 
-* Database initialization
+# Routes
 
-* How to run the test suite
+POST /login => {'email' : "enrique@mail.com", password: "password"}.   
+  #response: {user_obj : object, "token": "XXXXXX-XXXXX"}
+ - REQUIERE LOGIN headers => Authorization (Bearer + "token")
+  - POST /users => {'email' : "enrique@mail.com", password: "password"} #new_user
+    
+    #response user(object)
+  - POST /links => {'full' : "http://link_test.com"} #new_link
 
-* Services (job queues, cache servers, search engines, etc.)
+    #response { "id": 1, "full": "http://link_test.com", "short": `"hHvvUe"`, "total_views": int}
+        
+  - GET /links #links_index
 
-* Deployment instructions
+    #respose [{"id": 1,"full": "http://link_test.com","short": "hHvvUe","total_views": 1}]
+    
+  - GET /links/:id/views #links_index
 
-* ...
+    #response [{ "operative_system": "Macintosh", "browser": "Chrome", "ip_address": "187.189.127.233", "date": "2022-01-19 - 12:23:08"}]
+    
+# Use short
+Go to url /code
+````
+localhost:3000/:code
+````
+redirect to full_link
+
+# Deploy
+
+Using API from https://kredichallenge.herokuapp.com
+Heroku Deploy, db: postgres
+credentials
+````
+mail: enrique@mail.com
+password: password
+````
