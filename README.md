@@ -18,6 +18,10 @@ Run migrations and gen seeders
 ````
 $ rails db:migrate db:seed
 ````
+````
+$ rails s
+````
+
 Is running in port: 3000 
 
 # Routes
